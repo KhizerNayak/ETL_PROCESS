@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+*.env
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# OS-generated
+*.swp
+.env
+docker-compose.yml
