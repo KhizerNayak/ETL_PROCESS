@@ -1,1 +1,93 @@
-# enable virtual environment 
+# 🏦 Credit Risk ETL & Streaming Pipeline
+
+This project is a structured ETL + Real-Time Streaming workflow that starts with a **Credit Risk CSV file** and ends in a **Kafka-powered data stream** with future PySpark transformations.
+
+---
+
+## 🧱 Project Structure
+
+### 📁 Phase 1: ETL (CSV to MySQL)
+- **Extract**: Raw `credit_risk_data.csv`
+- **Transform**: Clean, normalize data (e.g., rename columns, drop NA, convert types)
+- **Load**: Insert cleaned data into MySQL table
+
+✅ **Tools**: Python (Pandas, SQLAlchemy), MySQL
+
+```bash
+📂 Testingcompose/
+├── data/
+│   └── Credit Risk Benchmark Dataset.csv
+├── etl/
+│   └── extract.py
+│   └── load.py
+│   └── transform.py
+│   └── sqlcredcheck.py
+├── docker/
+│   └── docker-compose.yml  # Nothing till now 
+├── .env
+|── venv
+├── main.py
+├── .gitignore
+└── README.md
+└── requirement.txt
+└── transform.log
+
+---
+
+### 📡 Phase 2: Kafka & Debezium CDC
+- Connect **MySQL** to **Kafka** using **Debezium Connector**
+- Enable real-time Change Data Capture (CDC)
+- Debezium publishes changes to **Kafka topics**
+
+✅ **Tools**: Kafka, Debezium, Kafka Connect
+
+---
+
+### 🔁 Phase 3: Stream Transformations
+
+#### 1️⃣ Mini Project: Basic Kafka Consumer Transformation
+- Consume Kafka topic
+- Apply basic filtering or transformation logic
+- Write to another topic or log output
+
+#### 2️⃣ Full Project: PySpark Streaming
+- Use PySpark Structured Streaming to read from Kafka
+- Apply advanced transformations (e.g., filtering, joining, aggregations)
+- Optionally write transformed data to:
+  - Another Kafka topic
+  - HDFS
+  - MySQL/Postgres
+
+✅ **Tools**: PySpark, Kafka, MySQL
+
+---
+
+## 🧪 Folder Layout
+
+```bash
+📂 Testingcompose/
+├── data/
+│   └── credit_risk_data.csv
+├── scripts/
+│   └── etl_to_mysql.py
+│   └── kafka_transform.py
+│   └── pyspark_transform.py
+├── docker/
+│   └── docker-compose.yml  # Kafka + Zookeeper + Debezium + MySQL
+├── .env
+├── .gitignore
+└── README.md
+
+📈 Future Goals
+
+    ✅ Build Apache Superset Dashboard for MySQL + Transformed Kafka Topics
+
+    ✅ Airflow DAGs for automated ETL & Streaming
+
+    ✅ Performance benchmarking between PySpark and Flink
+
+🧠 Author
+
+Khizer Nayak
+Fintech & Data Engineering Intern | Kafka + PySpark Enthusiast
+🌍 Exploring the world and data at the same time!
