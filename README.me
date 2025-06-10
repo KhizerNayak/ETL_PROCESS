@@ -1,93 +1,45 @@
-# 🏦 Credit Risk ETL & Streaming Pipeline
+# 🧪 Mini ETL Project: Credit Risk Dataset (CSV → MySQL)
 
-This project is a structured ETL + Real-Time Streaming workflow that starts with a **Credit Risk CSV file** and ends in a **Kafka-powered data stream** with future PySpark transformations.
+This mini project demonstrates a simple and clean **ETL pipeline** that reads a credit risk CSV file,transforms it using **Pandas**, and loads it into a **MySQL database**.
+
+This is part of a larger data engineering pipeline where **streaming (Kafka, Debezium)** and **PySpark-based transformations** will be added later.
 
 ---
 
-## 🧱 Project Structure
+## 📌 Project Goal
 
-### 📁 Phase 1: ETL (CSV to MySQL)
-- **Extract**: Raw `credit_risk_data.csv`
-- **Transform**: Clean, normalize data (e.g., rename columns, drop NA, convert types)
-- **Load**: Insert cleaned data into MySQL table
+- ✅ Extract data from `Credit Risk Benchmark Dataset.csv`
+- ✅ Transform data using **Pandas** (cleaning, renaming, formatting)
+- ✅ Load the cleaned data into a **MySQL table** using **SQLAlchemy**
 
-✅ **Tools**: Python (Pandas, SQLAlchemy), MySQL
+---
+
+## 🧱 Current Project Structure (ETL Only)
 
 ```bash
 📂 Testingcompose/
 ├── data/
 │   └── Credit Risk Benchmark Dataset.csv
 ├── etl/
-│   └── extract.py
-│   └── load.py
-│   └── transform.py
-│   └── sqlcredcheck.py
+│   ├── extract.py              # Read CSV using pandas
+│   ├── transform.py            # Clean and transform the data
+│   ├── load.py                 # Insert data into MySQL
+│   └── sqlcredcheck.py         # Utility to check SQL connection
 ├── docker/
-│   └── docker-compose.yml  # Nothing till now 
-├── .env
-|── venv
-├── main.py
+│   └── docker-compose.yml      # (Empty for now — to be used in next phase)
+├── venv/                       # Python virtual environment
+├── .env                        # Stores database credentials use like mysql_user , mysql_pass to connect it easily 
 ├── .gitignore
-└── README.md
-└── requirement.txt
-└── transform.log
+├── main.py                     # use loads.py main is still not in use since this project will soon grow and will be in realtime streaming  
+├── transform.log               # Logs for transformations
+├── requirements.txt            # Python dependencies
+└── README.md                   # This file
 
----
+data is used or taken from kaggle to use freely and for practise
 
-### 📡 Phase 2: Kafka & Debezium CDC
-- Connect **MySQL** to **Kafka** using **Debezium Connector**
-- Enable real-time Change Data Capture (CDC)
-- Debezium publishes changes to **Kafka topics**
-
-✅ **Tools**: Kafka, Debezium, Kafka Connect
-
----
-
-### 🔁 Phase 3: Stream Transformations
-
-#### 1️⃣ Mini Project: Basic Kafka Consumer Transformation
-- Consume Kafka topic
-- Apply basic filtering or transformation logic
-- Write to another topic or log output
-
-#### 2️⃣ Full Project: PySpark Streaming
-- Use PySpark Structured Streaming to read from Kafka
-- Apply advanced transformations (e.g., filtering, joining, aggregations)
-- Optionally write transformed data to:
-  - Another Kafka topic
-  - HDFS
-  - MySQL/Postgres
-
-✅ **Tools**: PySpark, Kafka, MySQL
-
----
-
-## 🧪 Folder Layout
-
-```bash
-📂 Testingcompose/
-├── data/
-│   └── credit_risk_data.csv
-├── scripts/
-│   └── etl_to_mysql.py
-│   └── kafka_transform.py
-│   └── pyspark_transform.py
-├── docker/
-│   └── docker-compose.yml  # Kafka + Zookeeper + Debezium + MySQL
-├── .env
-├── .gitignore
-└── README.md
-
-📈 Future Goals
-
-    ✅ Build Apache Superset Dashboard for MySQL + Transformed Kafka Topics
-
-    ✅ Airflow DAGs for automated ETL & Streaming
-
-    ✅ Performance benchmarking between PySpark and Flink
 
 🧠 Author
 
 Khizer Nayak
-Fintech & Data Engineering Intern | Kafka + PySpark Enthusiast
+Fintech & Data Engineering | Data Enthusiast
 🌍 Exploring the world and data at the same time!
